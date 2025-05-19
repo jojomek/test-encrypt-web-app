@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117">
+  <title>Encrypt/Decrypt System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="floatingMessage" class="floating-message"></div>
+
+  <div class="container">
+    <h1><div class="wrapper">
+	<svg>
+		<text x="50%" y="50%" dy=".35em" text-anchor="middle">
+			Secrypt
+		</text>
+	</svg>
+</div></h1><p>By: Dela Cruz, Marc Juzzel P.
+    (Educational Purpose Only)
+</p>
+
+
+    <textarea id="inputText" placeholder="Enter text here..." oninput="livePreview()"></textarea>
+
+    <label for="key">Enter Key:</label>
+    <input type="text" id="key" placeholder="Enter key here" title="Enter a key" oninput="livePreview()">
+    <small id="keyHelp" style="display:block; color:gray; margin-top:2px;"></small>
+    <label for="algorithm">Select Algorithm:</label>
+    <select id="algorithm" onchange="updateKeyTooltip(); livePreview();">
+      <option value="caesar">Caesar Cipher</option>
+      <option value="vigenere">Vigenère Cipher</option>
+      <option value="substitution">Substitution Cipher</option>
+    </select>
+
+    <div class="buttons">
+      <button onclick="encryptText()">Encrypt</button>
+      <button onclick="decryptText()">Decrypt</button>
+    </div>
+  <div>
+    <h2>Result:</h2>
+    <textarea id="outputText" readonly ></textarea>
+    <button class="copybtn" onclick="copyOutput()" id="copyButton">Copy</button>
+<span id="copyStatus" style="margin-left: 0px; display: none;"></span>
+<button id="saveToCloudBtn" class="cloudbtn"> Save to Cloud</button>
+<p>Want to save your encrypted/decrypted texts? Click "Save to Cloud"!</p>
+    </div>
+
+  </div>
+  <div id="cloudToast" class="floating-message green"></div>
+
+  
+
+
+  <div class="info-section">
+    <div class="info-card">
+      <h2>🔐 How It Works</h2>
+      <p1>This system supports Caesar, Vigenère, and Substitution ciphers. The Caesar cipher shifts letters by a key number. Vigenère uses a repeating keyword. Substitution uses a full 26-letter mapping.</p1>
+      <p1>Use this tool to understand basic encryption logic!</p1>
+    </div>
+
+    <div class="info-card">
+      <h2>💡 Fun Facts & Use Cases</h2>
+      <ul>
+        <li>Used by Julius Caesar to send secret messages</li>
+        <li>Popular in escape rooms and puzzle games</li>
+        <li>Great way to hide spoilers from your friends</li>
+        <li>Helps beginners learn basic cybersecurity</li>
+      </ul>
+    </div>
+  </div>
+  
+
+  
+  
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Encrypt/Decrypt System. All rights reserved.</p>
+      
+    </div>
+  </footer>
+ <script type="module" src="app.js"></script>
+<script type="module" src="/save-to-cloud.js"></script>
+  <script src="copy.js"> </script>
+  <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Floating Save-to-Cloud Popup -->
+<div id="cloudPopup" class="cloud-popup hidden">
+  <div class="cloud-popup-backdrop"></div>
+  <div class="cloud-popup-content">
+    <button id="closeCloudPopupBtn" class="close-btn">&times;</button>
+    <h2>Save to Cloud</h2>
+
+    <button id="generateCodeBtn" class="popup-btn">Generate New Code</button>
+   <p id="generatedCode" class="mt-2 text-sm text-gray-700"></p>
+
+    <hr />
+
+    <div id="reuseCodeSection">
+      <p>Already have a code? Reuse it below:</p>
+      <input type="text" id="reuseCodeInput" placeholder="Enter your code" />
+      <button id="confirmReuseBtn" class="popup-btn">Re-use This Code</button>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+</html>
+
+
